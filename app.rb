@@ -7,6 +7,14 @@ require 'sinatra/activerecord'
 set :database, "sqlite3:barbershop.db" #connect to db syntax via active record
 
 class Client < ActiveRecord::Base
+
+	validates :name, presence: true # means field can't be empty
+	#or 
+	#validates :name, presence => true
+
+	validates :phone, presence: true
+	validates :datestamp, presence: true
+	validates :color, presence: true
 end
 
 class Barber < ActiveRecord::Base
