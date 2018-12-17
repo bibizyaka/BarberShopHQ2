@@ -8,7 +8,8 @@ set :database, "sqlite3:barbershop.db" #connect to db syntax via active record
 
 class Client < ActiveRecord::Base
 
-	validates :name, presence: true # means field can't be empty
+	validates :name, presence: true, # means field can't be empty
+	          length: { minimum: 3 }
 	#or 
 	#validates :name, presence => true
 
