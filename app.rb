@@ -35,15 +35,19 @@ get '/' do
 end
 
 get '/visit' do
+	@c = Client.new
 	erb :visit
 end
 
 post '/visit' do
 
-	c = Client.new params[:client] #That way code is much shorter 
-	c.save
-	erb "<h2>Thank You! You are submitted!</h2>"
-
+	@c = Client.new params[:client] #That way code is much shorter 
+	if @c.save
+	   erb "<h2>Thank You! You are submitted!</h2>"
+    else 
+       @error = @c.errors.full_messages.first
+       erb :visit
+    end
 end# post visit
 
 get '/contacts' do
