@@ -72,9 +72,13 @@ post '/contacts' do
        Contact.find_or_create_by(email: @email, comments: @comments )
        erb "<h2>Thank You, your comments have been submited!</h2>"
 	end
-
-
-
 end #post contancts
 
+
+get '/barber/:id' do
+
+	@barber_id = params[:id]
+    erb :barber
+
+end
 
