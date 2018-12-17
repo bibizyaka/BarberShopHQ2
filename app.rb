@@ -78,6 +78,7 @@ end #post contancts
 get '/barber/:id' do
 
 	@barber_id = params[:id]
+	@barber = Barber.find(@barber_id)
     erb :barber
 
 end
