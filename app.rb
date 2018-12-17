@@ -32,26 +32,9 @@ end
 
 post '/visit' do
 
-	@username = params[:username]
-	@phone    = params[:phone]
-	@datetime = params[:datetime]
-	@barber   = params[:barber]
-	@color    = params[:color]
-
-	if @username == ""
-	   @error = "Provide your name..."
-	   erb:visit
-    elsif @phone == ""
-       @error = "Provide your phone..."
-	   erb:visit
-    elsif @datetime == ""
-	   @error = "Provide your schedule..."
-	   erb:visit
-    else # data valid, input to DB
-       Client.find_or_create_by(name: @username, phone: @phone, datestamp: @datetime, barber: @barber, color: @color )
-       erb "<h2>Thank You, you signed up</h2>"
-	end
-
+	c = Client.new params[:client] #That way code is much shorter 
+	c.save
+	erb "<h2>Thank You! You are submitted!</h2>"
 
 end# post visit
 
